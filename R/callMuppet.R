@@ -17,9 +17,9 @@ callMuppet <- function(...){
   
   run.string <- 
     stringr::str_c(findMuppet(), ' ',
-                   stringr::str_c(names(args),args,sep = ' ') %>% 
-                     stringr::str_trim() %>% 
-                     stringr::str_c('-',.,collapse = ' '))
+                   stringr::str_c(names(args),args,sep = ' ') |> 
+                     stringr::str_trim() |> 
+                     stringr::str_c('-', text = _, collapse = ' '))
   res <- tryCatch(system(run.string,
                          ignore.stdout = FALSE,
                          ignore.stderr = FALSE,
