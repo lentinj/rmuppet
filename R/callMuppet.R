@@ -11,6 +11,7 @@ callMuppet <- function(...){
   if('run_dir' %in% names(args)){
     old.dir <- getwd()
     setwd(args[['run_dir']])
+    on.exit(setwd(old.dir), add = TRUE)
     args <- args[names(args)!='run_dir']
   }
   
@@ -24,9 +25,6 @@ callMuppet <- function(...){
                          ignore.stderr = FALSE,
                          intern = TRUE),
                   error=function(e) sprintf(''))
-  if(exists('old.dir')){
-    setwd(old.dir)
-  }
 }
 
 findMuppet <- function () {
