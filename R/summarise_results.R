@@ -7,8 +7,8 @@
 #' @export
 summarise_results <- function(d, n = 5) {
   d |>
-    filter(year %in% c(max(year):(max(year) - n))) |>
-    summarise(catchmean = mean(catch),
+    dplyr::filter(year %in% c(max(year):(max(year) - n))) |>
+    dplyr::summarise(catchmean = mean(catch),
               catch10 = quantile(catch, 0.10),
               catch05=quantile(catch,   0.05),
               catchmed=median(catch),

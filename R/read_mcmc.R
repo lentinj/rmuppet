@@ -12,8 +12,8 @@ read_mcmc <- function(file, cn = "value") {
   colnames(d) <- stringr::str_sub(colnames(d), stringr::str_locate(colnames(d), "\\.")[,1] + 1)
   d <-
     d |>
-    mutate(iter = 1:n()) |>
-    gather(year, value, -iter, convert = TRUE)
+    dplyr::mutate(iter = 1:n()) |>
+    tidyr::gather(year, value, -iter, convert = TRUE)
   colnames(d)[3] <- cn
 
   return(d)
