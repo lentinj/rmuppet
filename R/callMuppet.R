@@ -11,22 +11,20 @@ callMuppet <- function(...){
   if('run_dir' %in% names(args)){
     old.dir <- getwd()
     setwd(args[['run_dir']])
+    on.exit(setwd(old.dir), add = TRUE)
     args <- args[names(args)!='run_dir']
   }
   
   run.string <- 
     stringr::str_c(findMuppet(), ' ',
-                   stringr::str_c(names(args),args,sep = ' ') %>% 
-                     stringr::str_trim() %>% 
-                     stringr::str_c('-',.,collapse = ' '))
+                   stringr::str_c(names(args),args,sep = ' ') |> 
+                     stringr::str_trim() |> 
+                     stringr::str_c('-', text = _, collapse = ' '))
   res <- tryCatch(system(run.string,
                          ignore.stdout = FALSE,
                          ignore.stderr = FALSE,
                          intern = TRUE),
                   error=function(e) sprintf(''))
-  if(exists('old.dir')){
-    setwd(old.dir)
-  }
 }
 
 findMuppet <- function () {

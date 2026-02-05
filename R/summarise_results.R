@@ -6,9 +6,9 @@
 #' @return A tibble
 #' @export
 summarise_results <- function(d, n = 5) {
-  d %>%
-    filter(year %in% c(max(year):(max(year) - n))) %>%
-    summarise(catchmean = mean(catch),
+  d |>
+    dplyr::filter(year %in% c(max(year):(max(year) - n))) |>
+    dplyr::summarise(catchmean = mean(catch),
               catch10 = quantile(catch, 0.10),
               catch05=quantile(catch,   0.05),
               catchmed=median(catch),
@@ -17,6 +17,5 @@ summarise_results <- function(d, n = 5) {
               ssb05=quantile(ssb, 0.05),
               meanrec=mean(rec),
               rec05=quantile(rec, 0.05),
-              meanF=mean(refF)) %>%
-    return()
+              meanF=mean(refF))
 }

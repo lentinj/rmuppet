@@ -33,19 +33,19 @@ set_prognosis <- function(infile,
 
 
 
-  readLines(infile) %>% 
-    line_replace(txt, fbar,'# FishingMortality') %>% 
-    line_replace(txt, hr,'# HarvestRate') %>% 
-    line_replace(txt, w.rho,'# WeightCorr') %>% 
-    line_replace(txt, w.cv,'# WeightCV') %>% 
-    line_replace(txt, rec.rho,'# RecrCorr') %>% 
-    line_replace(txt, ass.cv,"# AssessmentCV") %>% 
-    line_replace(txt, ass.rho,"# AssessmentCorr") %>% 
-    line_replace(txt, ass.bias,"# AssessmentBias") %>% 
-    line_replace(txt, Btrigger,"# Btrigger") %>% 
-    line_replace(txt, MaxChange,"# MaxChange") %>% 
-    line_replace(txt, mW.years,"# Meanwtyears") %>% 
-    line_replace(txt, LastYearsTacRatio,"# LastYearsTacRatio") %>% 
+  readLines(infile) |> 
+    line_replace(fbar,'# FishingMortality') |> 
+    line_replace(hr,'# HarvestRate') |> 
+    line_replace(w.rho,'# WeightCorr') |> 
+    line_replace(w.cv,'# WeightCV') |> 
+    line_replace(rec.rho,'# RecrCorr') |> 
+    line_replace(ass.cv,"# AssessmentCV") |> 
+    line_replace(ass.rho,"# AssessmentCorr") |> 
+    line_replace(ass.bias,"# AssessmentBias") |> 
+    line_replace(Btrigger,"# Btrigger") |> 
+    line_replace(MaxChange,"# MaxChange") |> 
+    line_replace(mW.years,"# Meanwtyears") |> 
+    line_replace(LastYearsTacRatio,"# LastYearsTacRatio") |> 
     write.table(file = outfile,
                 row.names = F, col.names = F, quote = F)
 
