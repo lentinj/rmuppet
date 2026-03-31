@@ -50,16 +50,3 @@ set_prognosis <- function(infile,
                 row.names = F, col.names = F, quote = F)
 
 }
- 
-
-line_replace <- function(txt, parameter, pattern){
-  if(!missing(parameter)){
-    i <- grep(pattern,txt)
-    #if(!any(i)){
-    #  print(paste("   ",pattern,"   ","does not exist"))
-    #  break()
-    #}
-    txt[i] <- paste(as.character(parameter),"\t",pattern)
-  }
-  return(txt)
-}

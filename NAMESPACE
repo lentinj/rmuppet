@@ -2,6 +2,7 @@
 
 export(callMuppet)
 export(gather_results)
+export(line_replace)
 export(read_mcmc)
 export(set_prognosis)
 export(summarise_results)
